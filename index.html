@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nazwa Djulia | Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- ApexCharts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <style>
+        /* --- GLOBAL VARIABLES --- */
+        :root {
+            --bg-dark: #02040a; 
+            --bg-card: rgba(15, 23, 42, 0.65);
+            --text-main: #ffffff;
+            --text-muted: #cbd5e1;
+            --accent-cyan: #22d3ee; 
+            --accent-purple: #8b5cf6;
+            --accent-emerald: #10b981;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
+
+        /* --- RESET & BASE --- */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--bg-dark) !important;
+            font-family: var(--font-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+
+        /* Helpers */
+        .text-white { color: #ffffff !important; }
+        .text-info { color: var(--accent-cyan) !important; }
+        .text-muted { color: #94a3b8 !important; }
+
+        /* Scroll Offset for Navigation */
+        section, #about, #experience, #projects, #skills, #contact {
+            scroll-margin-top: 100px;
+        }
+
+        /* --- BACKGROUND PATTERN --- */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.4;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        /* --- NAVBAR (STICKY & GLASS) --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(2, 4, 10, 0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+        .brand-accent { color: var(--accent-cyan); }
+        .nav-link {
+            color: #cbd5e1 !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-left: 1.2rem;
+            transition: color 0.3s;
+        }
+        .nav-link:hover { color: var(--accent-cyan) !important; }
+        
+        .btn-talk {
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            border-radius: 50px;
+            padding: 8px 24px;
+            font-size: 0.9rem;
+            margin-left: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .btn-talk:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            background: rgba(34, 211, 238, 0.1);
+        }
+
+        /* --- SOCIAL SIDEBAR --- */
+        .social-sidebar {
+            position: fixed;
+            left: 35px;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            z-index: 100;
+        }
+        .social-sidebar a {
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        .social-sidebar a:hover {
+            color: var(--accent-cyan);
+            transform: translateY(-3px);
+        }
+        .social-line {
+            width: 1px;
+            height: 80px;
+            background-color: rgba(255,255,255,0.2);
+            margin-top: 10px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 5rem;
+            position: relative;
+        }
+        .tagline-wrapper {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.1);
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            position: relative;
+            border-left: 4px solid var(--accent-cyan);
+        }
+        .tagline-text {
+            font-family: var(--font-code);
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .cursor-blink { animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+        .btn-project {
+            background-color: var(--accent-cyan);
+            color: #0f172a;
+            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 50px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+        .btn-project:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(34, 211, 238, 0.5);
+            color: #0f172a;
+        }
+
+        .btn-outline-custom {
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            font-weight: 600;
+            padding: 13px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-left: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-outline-custom:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            background: rgba(34, 211, 238, 0.05);
+        }
+
+        /* --- 3D PHOTO CARD --- */
+        .card-container {
+            position: relative;
+            width: 320px;
+            height: 450px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+        .photo-card {
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            background-size: cover;
+            background-position: center top;
+            background-image: url('foto.jpg'); 
+            position: relative;
+            transform: rotateY(-12deg) rotateX(5deg) rotateZ(-2deg);
+            transform-style: preserve-3d;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: transform 0.5s ease;
+            z-index: 2;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .card-glow {
+            position: absolute;
+            top: 10%; left: 10%;
+            width: 80%; height: 80%;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-cyan));
+            filter: blur(60px);
+            opacity: 0.5;
+            z-index: 1;
+            transform: rotateY(-12deg) translateZ(-50px);
+            animation: pulse-glow 4s infinite alternate;
+        }
+        @keyframes pulse-glow {
+            from { opacity: 0.4; filter: blur(50px); }
+            to { opacity: 0.6; filter: blur(70px); }
+        }
+        .role-badge {
+            position: absolute;
+            bottom: 25px; left: 20px; right: 20px;
+            padding: 16px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateZ(20px);
+        }
+        .role-label {
+            font-family: var(--font-code);
+            font-size: 0.7rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .role-text {
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .status-dot {
+            width: 8px; height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #22c55e;
+        }
+
+        /* --- CARDS --- */
+        .feature-card, .stat-card, .chart-card, .experience-card, .project-card, .skill-card {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .feature-card:hover, .stat-card:hover, .project-card:hover, .experience-card:hover, .skill-card:hover {
+            border-color: rgba(34, 211, 238, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .icon-box {
+            width: 50px; height: 50px;
+            background-color: rgba(34, 211, 238, 0.1);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+        }
+        .section-divider {
+            width: 60px; height: 4px; background: #22d3ee; margin: 10px auto 40px auto; border-radius: 2px;
+        }
+
+        /* --- EXPERIENCE SPECIFIC --- */
+        .badge-custom {
+            font-family: var(--font-code);
+            font-size: 0.7rem;
+            padding: 5px 12px;
+            border-radius: 50px;
+            background: rgba(34, 211, 238, 0.1);
+            color: #22d3ee;
+            border: 1px solid rgba(34, 211, 238, 0.2);
+            text-transform: uppercase;
+        }
+        .badge-purple {
+            background: rgba(139, 92, 246, 0.15);
+            color: #a78bfa;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        .badge-emerald {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+        .date-badge {
+            font-family: var(--font-code);
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            background: #0f172a;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            white-space: nowrap;
+        }
+        .experience-desc {
+            border-left: 3px solid #22d3ee;
+            padding-left: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+            font-size: 0.92rem;
+        }
+        .experience-desc ul {
+            padding-left: 1.2rem;
+        }
+        .experience-desc li {
+            margin-bottom: 0.4rem;
+        }
+        .org-desc {
+            border-left: 3px solid #8b5cf6;
+            padding-left: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+            font-size: 0.92rem;
+        }
+        .tech-pill {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: #ffffff;
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: var(--font-code);
+        }
+
+        /* --- PROJECT SPECIFIC --- */
+        .project-icon {
+            width: 50px; height: 50px;
+            background: rgba(34, 211, 238, 0.1);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            color: #22d3ee;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills Tag Pills */
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        .skill-tag:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            background: rgba(34, 211, 238, 0.08);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .hero-title { font-size: 3rem; text-align: center; }
+            .hero-desc { margin: 0 auto 2rem; text-align: center; }
+            .hero-section { flex-direction: column; text-align: center; justify-content: center; }
+            .tagline-wrapper { margin-top: 2rem; margin-right: auto; margin-left: auto; }
+            .social-sidebar { display: none; }
+            .card-container { margin-top: 60px; }
+            .navbar-collapse { background: #02040a; padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); margin-top: 10px; }
+            .btn-talk { margin: 1rem 0 0 0; display: block; text-align: center; }
+        }
+    </style>
+  </head>
+  
+  <body>
+
+    <!-- Background Grid Pattern -->
+    <div class="bg-pattern"></div>
+
+    <!-- Fixed Social Sidebar -->
+    <div class="social-sidebar">
+        <a href="https://linkedin.com/in/nazwa-djulia" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/nazwadjuliaaaa" target="_blank" title="GitHub"><i class="bi bi-github"></i></a>
+        <a href="http://instagram.com/nazwajulia_/" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="mailto:nazwadjulia24@gmail.com" title="Email"><i class="bi bi-envelope"></i></a>
+        <div class="social-line"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          My<span class="brand-accent">Portofolio</span>
+        </a>
+        
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item">
+                <a href="#contact" class="btn-talk">Let's Talk</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                
+                <div class="col-lg-7">
+                    <div class="tagline-wrapper">
+                        <div class="tagline-text">
+                            HI I'M..<span class="cursor-blink">_</span>
+                        </div>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Nazwa Djulia
+                    </h1>
+
+                    <p class="hero-desc">
+                        Informatics student at Al-Azhar Indonesia University (<strong>GPA 3.65 / 4.00</strong>). Experienced in data processing & analysis, LLM email classification systems, UI/UX design, and web/application development using Laravel, Python, Flutter, and SQL.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3 align-items-center justify-content-center justify-content-lg-start">
+                        <a href="#projects" class="btn-project">
+                            View Projects <i class="bi bi-rocket-takeoff-fill"></i>
+                        </a>
+                        <a href="mailto:nazwadjulia24@gmail.com" class="btn-outline-custom">
+                            <i class="bi bi-envelope-fill"></i> Contact Me
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 position-relative">
+                    <div class="card-container">
+                        <div class="card-glow"></div>
+                        
+                        <div class="photo-card">
+                            <div class="role-badge">
+                                <span class="role-label">CURRENT STATUS</span>
+                                <div class="role-text">
+                                    <span class="status-dot"></span>
+                                    Informatics Student & Data Analyst Intern
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- About & Competencies Section -->
+    <div id="about" class="container py-5 mt-4">
+        <!-- Feature Cards -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="icon-box"> <i class="bi bi-bar-chart-line-fill"></i> </div>
+                    <h3 class="feature-title fw-bold text-white h5">Data Processing & Analytics</h3>
+                    <p class="small text-muted">Pengolahan, pembersihan data (Pandas/Python), klasifikasi e-COO dengan LLMs, analisis performa model (Precision/Recall/F1), dan visualisasi data.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="icon-box"> <i class="bi bi-code-slash"></i> </div>
+                    <h3 class="feature-title fw-bold text-white h5">Web & App Development</h3>
+                    <p class="small text-muted">Pengembangan aplikasi web terstruktur menggunakan Laravel, PHP, MySQL, HTML/CSS, serta integrasi Flutter, Supabase, dan Gemini API.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="icon-box"> <i class="bi bi-palette-fill"></i> </div>
+                    <h3 class="feature-title fw-bold text-white h5">UI/UX & Systems Usability</h3>
+                    <p class="small text-muted">Perancangan antarmuka aplikasi yang user-oriented menggunakan Figma & Adobe XD, dengan analisis kinerja dan kebiasaan pengguna secara terstruktur.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About & Achievements Stats -->
+        <div class="row g-5 align-items-center mt-2">
+            <div class="col-lg-6">
+                <h2 class="section-title mb-3">About & Background</h2>
+                <p class="text-muted mb-4" style="line-height: 1.8;">
+                    Saya adalah mahasiswa <strong>Informatika Universitas Al-Azhar Indonesia (Sept 2023 - Present)</strong> dengan IPK <strong>3.65 / 4.00</strong>. Berpengalaman sebagai <em>Data Analyst Intern</em> di LNSW Kementerian Keuangan RI, <em>HRIS Intern</em> di PT Pratama Mitra Sejati, <em>Ambassador UAI</em>, serta pengurus Divisi Humas & Advokasi HMIF UAI. Memiliki ketertarikan kuat dalam pengembangan teknologi digital, analisis data berorientasi hasil, serta komunikasi profesional yang adaptif.
+                </p>
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <div class="display-5 fw-bold text-info">3.65</div>
+                            <div class="small text-muted font-monospace">GPA (OUT OF 4.00)</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <div class="display-5 fw-bold text-info">4+</div>
+                            <div class="small text-muted font-monospace">INTERNS & ROLES</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <div class="display-5 fw-bold text-info">6+</div>
+                            <div class="small text-muted font-monospace">KEY PROJECTS</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <div class="display-5 fw-bold text-info">20+</div>
+                            <div class="small text-muted font-monospace">TOOLS & TECH</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="chart-card">
+                    <div class="small text-info font-monospace mb-3"><i class="bi bi-radar"></i> COMPETENCY MATRIX</div>
+                    <div id="competencyChart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Experience Section -->
+    <div id="experience" class="container py-5 mb-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-white display-6">Professional & Organizational Journey</h2>
+            <div class="section-divider"></div>
+            <p style="color: #cbd5e1; max-width: 650px; margin: 0 auto;">
+                Pengalaman kerja magang, peran akademis, dan keaktifan organisasi yang telah saya jalani.
+            </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            
+            <!-- 1. Data Analyst Intern | LNSW Kemenkeu -->
+            <div class="col-lg-10">
+                <div class="experience-card">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-3">
+                        <div>
+                            <h3 class="text-white fw-bold mb-2 h4">Data Analyst Intern</h3>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge-custom badge-emerald">Data Analytics</span>
+                                <span class="badge-custom">LLM & Prompt Eng</span>
+                                <span class="badge-custom">Python</span>
+                            </div>
+                        </div>
+                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>Marc 2026 – Jun 2026 </div>
+                    </div>
+                    <div class="company-name mb-3 text-info fw-semibold"> 
+                        <i class="bi bi-building-fill me-2"></i> Lembaga National Single Window (LNSW), Ministry of Finance of Indonesia 
+                    </div>
+                    <div class="experience-desc">
+                        <ul>
+                            <li>Menganalisis data email Contact Center e-COO menggunakan <strong>Large Language Models (LLMs)</strong> untuk mengevaluasi akurasi kategorisasi email oleh service agent.</li>
+                            <li>Melakukan <em>data cleaning</em>, <em>preprocessing</em>, dan <em>exploratory data analysis (EDA)</em> pada dataset email dan tiket menggunakan <strong>Python & Pandas</strong>.</li>
+                            <li>Mengembangkan sistem klasifikasi email otomatis melalui integrasi API LLM dan teknik <em>prompt engineering</em>.</li>
+                            <li>Mengevaluasi kinerja model menggunakan metrik <em>confusion matrix</em>, akurasi, presisi, <em>recall</em>, dan <em>F1-score</em>.</li>
+                            <li>Merancang sistem ekstraksi informasi untuk mengidentifikasi detail penting tiket (nomor dokumen, nama pengirim, negara tujuan, kategori isu).</li>
+                            <li>Membangun dan mengelola database <strong>SQLite</strong> untuk menyimpan hasil ekstraksi terstruktur guna analisis lanjutan.</li>
+                            <li>Membuat model klasifikasi berbasis aturan (rule-based) serta laporan visualisasi data untuk mendukung wawasan operasional Contact Center.</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto d-flex gap-2 flex-wrap">
+                        <span class="tech-pill"><i class="bi bi-code"></i> Python</span>
+                        <span class="tech-pill"><i class="bi bi-table"></i> Pandas</span>
+                        <span class="tech-pill"><i class="bi bi-robot"></i> LLM APIs</span>
+                        <span class="tech-pill"><i class="bi bi-database"></i> SQLite</span>
+                        <span class="tech-pill"><i class="bi bi-bar-chart"></i> Data Viz</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. HRIS Intern | PT. Pratama Mitra Sejati -->
+            <div class="col-lg-10">
+                <div class="experience-card">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-3">
+                        <div>
+                            <h3 class="text-white fw-bold mb-2 h4">HRIS Intern</h3>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge-custom badge-purple">Web Development</span>
+                                <span class="badge-custom">Laravel</span>
+                                <span class="badge-custom">Database Management</span>
+                            </div>
+                        </div>
+                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>15 Juni 2026 – 14 Okt 2026 </div>
+                    </div>
+                    <div class="company-name mb-3 text-info fw-semibold"> 
+                        <i class="bi bi-building-fill me-2"></i> PT. Pratama Mitra Sejati (Tugurent.com) 
+                    </div>
+                    <div class="experience-desc">
+                        <ul>
+                            <li>Mengembangkan dan meningkatkan fitur <strong>Payroll & Payslip</strong> pada sistem HR internal perusahaan (<strong>Tugurent.com</strong>).</li>
+                            <li>Mengelola serta memelihara data pegawai kontrak untuk memastikan akurasi dan konsistensi data sistem.</li>
+                            <li>Melakukan validasi dan verifikasi data pegawai secara berkala.</li>
+                            <li>Melakukan pengujian fungsional (<em>functional testing</em>) dan identifikasi bug khusus fitur Payroll & Payslip.</li>
+                            <li>Menggunakan <strong>VS Code, Laravel, MySQL, phpMyAdmin, dan GitHub</strong> untuk mendukung pengembangan fitur, manajemen database, dan pembaruan sistem.</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto d-flex gap-2 flex-wrap">
+                        <span class="tech-pill"><i class="bi bi-layers"></i> Laravel</span>
+                        <span class="tech-pill"><i class="bi bi-database"></i> MySQL</span>
+                        <span class="tech-pill"><i class="bi bi-tools"></i> phpMyAdmin</span>
+                        <span class="tech-pill"><i class="bi bi-git"></i> GitHub</span>
+                        <span class="tech-pill"><i class="bi bi-bug"></i> Functional Testing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Ambassador | University Al Azhar Indonesia -->
+            <div class="col-lg-10">
+                <div class="experience-card">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-3">
+                        <div>
+                            <h3 class="text-white fw-bold mb-2 h4">Ambassador</h3>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge-custom">Public Relations</span>
+                                <span class="badge-custom">Student Relations</span>
+                            </div>
+                        </div>
+                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>Nov 2023 – Jan 2026 </div>
+                    </div>
+                    <div class="company-name mb-3 text-info fw-semibold"> 
+                        <i class="bi bi-mortarboard-fill me-2"></i> Universitas Al Azhar Indonesia 
+                    </div>
+                    <div class="experience-desc">
+                        <ul>
+                            <li>Menjadi titik kontak utama bagi calon mahasiswa baru, menjawab pertanyaan, dan memberikan informasi komprehensif mengenai universitas.</li>
+                            <li>Membantu proses <em>onboarding</em> mahasiswa baru meliputi pendaftaran, orientasi, dan pendataan dokumen.</li>
+                            <li>Berbagi pengalaman pribadi mengenai kehidupan kampus, program akademik, dan kegiatan ekstrakurikuler.</li>
+                            <li>Bertindak sebagai penghubung (liaison) antara universitas dengan SMA/SMK mitra, organisasi masyarakat, dan pemangku kepentingan.</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto d-flex gap-2 flex-wrap">
+                        <span class="tech-pill">Public Speaking</span>
+                        <span class="tech-pill">Communication</span>
+                        <span class="tech-pill">Student Onboarding</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. KPPS Member | KPU -->
+            <div class="col-lg-10">
+                <div class="experience-card">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-3">
+                        <div>
+                            <h3 class="text-white fw-bold mb-2 h4">Members of the Voting Organizing Group (KPPS)</h3>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge-custom">Government</span>
+                                <span class="badge-custom">Public Administration</span>
+                            </div>
+                        </div>
+                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>Jan 2024 – Feb 2024 </div>
+                    </div>
+                    <div class="company-name mb-3 text-info fw-semibold"> 
+                        <i class="bi bi-shield-check me-2"></i> Komisi Pemilihan Umum (KPU) 
+                    </div>
+                    <div class="experience-desc">
+                        <ul>
+                            <li>Meningkatkan keterampilan komunikasi dan koordinasi publik dalam melayani masyarakat dari berbagai latar belakang secara akurat.</li>
+                            <li>Menjaga kedisiplinan, ketelitian, dan tanggung jawab dalam mengelola prosedur serta dokumen resmi yang bersifat penting dan sensitif.</li>
+                            <li>Bekerja efektif di lingkungan formal dengan batasan waktu yang ketat sesuai prosedur baku.</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto d-flex gap-2 flex-wrap">
+                        <span class="tech-pill">Administration</span>
+                        <span class="tech-pill">Team Coordination</span>
+                        <span class="tech-pill">Accuracy & Discipline</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Organization | HMIF UAI -->
+            <div class="col-lg-10">
+                <div class="experience-card" style="border-left: 4px solid #8b5cf6;">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-3">
+                        <div>
+                            <h3 class="text-white fw-bold mb-2 h4">Divisi Hubungan Masyarakat & Advokasi</h3>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge-custom badge-purple">Organization</span>
+                                <span class="badge-custom badge-purple">Public Relations</span>
+                            </div>
+                        </div>
+                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>Okt 2024 – Jan 2026 </div>
+                    </div>
+                    <div class="company-name mb-3 text-info fw-semibold"> 
+                        <i class="bi bi-people-fill me-2"></i> Himpunan Mahasiswa Informatika (HMIF) UAI 
+                    </div>
+                    <div class="org-desc">
+                        <ul>
+                            <li>Mengelola komunikasi internal dan eksternal organisasi untuk membangun citra positif dan menyebarkan informasi secara efektif.</li>
+                            <li>Merancang dan mengimplementasikan strategi publikasi media sosial, poster, dan konten informatif guna meningkatkan visibilitas program.</li>
+                            <li>Menjadi penghubung aspirasi anggota himpunan untuk pengolahan materi advokasi dan pengambilan keputusan organisasi.</li>
+                            <li>Berkolaborasi antar divisi dalam menyukseskan program kerja himpunan secara terstruktur.</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto d-flex gap-2 flex-wrap">
+                        <span class="tech-pill">Public Relations</span>
+                        <span class="tech-pill">Social Media Strategy</span>
+                        <span class="tech-pill">Advocacy</span>
+                        <span class="tech-pill">Team Leadership</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Featured Projects Section -->
+    <div id="projects" class="container py-5 mb-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold display-6 text-white">Featured Projects</h2>
+            <div class="section-divider"></div>
+            <p style="color: #cbd5e1; max-width: 600px; margin: 0 auto;">
+                Kumpulan proyek nyata dan akademik meliputi web development, sistem AI, UI/UX design, dan analisis sistem.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            
+            <!-- Project 1: Payroll & Payslip Feature -->
+            <div class="col-lg-6">
+                <div class="project-card">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="project-icon" style="color: #8b5cf6; background: rgba(139, 92, 246, 0.1);"> 
+                            <i class="bi bi-person-vcard-fill"></i> 
+                        </div>
+                        <span class="badge bg-dark border border-secondary text-info font-monospace">Tugurent.com</span>
+                    </div>
+                    <h3 class="h4 fw-bold mb-2 text-white">Payroll & Payslip Feature - Tugurent.com</h3>
+                    <p class="small mb-4 text-muted">Pengembangan & peningkatan fitur penggajian (Payroll) serta slip gaji (Payslip) pada sistem HR internal perusahaan. Terintegrasi dengan manajemen data karyawan kontrak & pengujian fungsional terstruktur.</p>
+                    <div class="mt-auto d-flex flex-wrap gap-2">
+                        <span class="tech-pill">Laravel</span>
+                        <span class="tech-pill">MySQL</span>
+                        <span class="tech-pill">phpMyAdmin</span>
+                        <span class="tech-pill">GitHub</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Smart Finance AI-Based -->
+            <div class="col-lg-6">
+                <div class="project-card">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="project-icon"> <i class="bi bi-robot"></i> </div>
+                        <div class="d-flex gap-2">
+                            <a href="https://github.com/nazwadjuliaaaa/SmartFinance" target="_blank" class="btn btn-sm btn-dark border-secondary rounded-pill px-3 text-white"><i class="bi bi-github"></i> Code</a>
+                            <a href="https://smartfinance-rose.vercel.app/" target="_blank" class="btn btn-sm btn-info text-dark rounded-pill px-3 fw-bold"><i class="bi bi-box-arrow-up-right"></i> Demo</a>
+                        </div>
+                    </div>
+                    <h3 class="h4 fw-bold mb-2 text-white">Smart Finance AI-Based</h3>
+                    <p class="small mb-4 text-muted">Aplikasi manajemen keuangan berbasis Flutter dengan integrasi Gemini API & Supabase. Memiliki fitur otomatis pencatatan cash inflow/outflow, analisis laba-rugi, serta rekomendasi bisnis strategis dari AI.</p>
+                    <div class="mt-auto d-flex flex-wrap gap-2">
+                        <span class="tech-pill">Flutter</span>
+                        <span class="tech-pill">Gemini API</span>
+                        <span class="tech-pill">Supabase</span>
+                        <span class="tech-pill">GitHub</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Website Cashier Taberu Bento -->
+            <div class="col-lg-6">
+                <div class="project-card">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="project-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);"> <i class="bi bi-shop"></i> </div>
+                        <a href="https://drive.google.com/drive/folders/13eYVY0biTlwXrjWdqS0JRTnBxxo2cAn1?usp=sharing" target="_blank" class="btn btn-sm btn-outline-warning rounded-pill px-3">View Folder <i class="bi bi-folder2-open"></i></a>
+                    </div>
+                    <h3 class="h4 fw-bold mb-2 text-white">Website Cashier Taberu Bento</h3>
+                    <p class="small mb-4 text-muted">Sistem kasir web terintegrasi untuk menghitung pendapatan, pengeluaran harian, serta ketersediaan stok bahan baku. Dilengkapi 2 level hak akses admin (Kasir & Pemilik Usaha).</p>
+                    <div class="mt-auto d-flex flex-wrap gap-2">
+                        <span class="tech-pill">HTML / CSS</span>
+                        <span class="tech-pill">PHP</span>
+                        <span class="tech-pill">MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: Wanna Healthy App -->
+            <div class="col-md-6 col-lg-6">
+                <div class="project-card">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="project-icon" style="color: #ec4899; background: rgba(236, 72, 153, 0.1);"> <i class="bi bi-palette-fill"></i> </div>
+                        <a href="https://drive.google.com/drive/folders/1oZNQNzXlo3slD7grPm9kg5wgSoHploZa?usp=sharing" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-3" style="color: #ec4899; border-color: #ec4899;">Design Link</a>
+                    </div>
+                    <h4 class="h5 fw-bold mb-2 text-white">Wanna Healthy App UI/UX</h4>
+                    <p class="small mb-4 text-muted">Perancangan desain antarmuka dan pengalaman pengguna aplikasi kesehatan berbasis Augmentation Reality (AR) untuk pemindaian dan deteksi kondisi kesehatan wajah.</p>
+                    <div class="mt-auto d-flex flex-wrap gap-2">
+                        <span class="tech-pill">Figma</span>
+                        <span class="tech-pill">UI/UX Design</span>
+                        <span class="tech-pill">AR Concept</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Scavenger Hunt App -->
+            <div class="col-md-6 col-lg-6">
+                <div class="project-card">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="project-icon" style="color: #3b82f6; background: rgba(59, 130, 246, 0.1);"> <i class="bi bi-controller"></i> </div>
+                        <a href="https://drive.google.com/file/d/147EYKvPjRvMiZj1sOmkWmVSo23-CY1j2/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-3" style="color: #60a5fa; border-color: #60a5fa;">Prototype</a>
+                    </div>
+                    <h4 class="h5 fw-bold mb-2 text-white">Scavenger Hunt App Prototype</h4>
+                    <p class="small mb-4 text-muted">Prototipe aplikasi permainan edukatif interaktif yang dikembangkan untuk Program Kreativitas Mahasiswa (PKM) bidang aplikasi interaktif.</p>
+                    <div class="mt-auto d-flex flex-wrap gap-2">
+                        <span class="tech-pill">Prototyping</span>
+                        <span class="tech-pill">Figma</span>
+                        <span class="tech-pill">PKM Project</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6: Library System Design -->
+            <div class="col-md-6 col-lg-6">
+                <div class="project-card">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div class="project-icon" style="color: #10b981; background: rgba(16, 185, 129, 0.1);"> <i class="bi bi-diagram-3-fill"></i> </div>
+                        <a href="https://drive.google.com/file/d/1DZHo8rfTcnZ_23t0awZtAiqAlO9vSeUy/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-3" style="color: #10b981; border-color: #10b981;">Doc Link</a>
+                    </div>
+                    <h4 class="h5 fw-bold mb-2 text-white">System Analysis - Library Management</h4>
+                    <p class="small mb-4 text-muted">Rancangan arsitektur sistem informasi manajemen perpustakaan mencakup perancangan data flow, analisis kebutuhan sistem, dan dokumentasi UML.</p>
+                    <div class="mt-auto d-flex flex-wrap gap-2">
+                        <span class="tech-pill">System Analysis</span>
+                        <span class="tech-pill">UML Design</span>
+                        <span class="tech-pill">Documentation</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Skills & Tools Showcase Section -->
+    <div id="skills" class="container py-5 mb-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold display-6 text-white">Skills & Competencies</h2>
+            <div class="section-divider"></div>
+            <p style="color: #cbd5e1; max-width: 600px; margin: 0 auto;">
+                Keahlian teknis, alat (tools), metode kerja, serta keahlian personal yang dikuasai.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Tools and Method Skills -->
+            <div class="col-lg-7">
+                <div class="skill-card">
+                    <h3 class="h4 fw-bold text-white mb-4 d-flex align-items-center gap-2">
+                        <i class="bi bi-tools text-info"></i> Tools & Method Skills
+                    </h3>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="skill-tag"><i class="bi bi-code-slash text-info"></i> Python</span>
+                        <span class="skill-tag"><i class="bi bi-layers text-purple"></i> Laravel</span>
+                        <span class="skill-tag"><i class="bi bi-database text-info"></i> MySQL</span>
+                        <span class="skill-tag"><i class="bi bi-database-fill text-warning"></i> SQL</span>
+                        <span class="skill-tag"><i class="bi bi-database-gear text-success"></i> SQLite</span>
+                        <span class="skill-tag"><i class="bi bi-palette text-pink"></i> Figma</span>
+                        <span class="skill-tag"><i class="bi bi-filetype-html text-warning"></i> HTML</span>
+                        <span class="skill-tag"><i class="bi bi-filetype-php text-primary"></i> PHP</span>
+                        <span class="skill-tag"><i class="bi bi-phone text-info"></i> Flutter</span>
+                        <span class="skill-tag"><i class="bi bi-robot text-info"></i> Gemini API</span>
+                        <span class="skill-tag"><i class="bi bi-cloud-check text-success"></i> Supabase</span>
+                        <span class="skill-tag"><i class="bi bi-git text-danger"></i> GitHub</span>
+                        <span class="skill-tag"><i class="bi bi-terminal text-info"></i> VSCode</span>
+                        <span class="skill-tag"><i class="bi bi-journal-code text-warning"></i> Google Colab</span>
+                        <span class="skill-tag"><i class="bi bi-book text-warning"></i> Jupyter Notebook</span>
+                        <span class="skill-tag"><i class="bi bi-hdd-network text-info"></i> XAMPP</span>
+                        <span class="skill-tag"><i class="bi bi-server text-info"></i> phpMyAdmin</span>
+                        <span class="skill-tag"><i class="bi bi-bug-fill text-danger"></i> Manual Testing</span>
+                        <span class="skill-tag"><i class="bi bi-file-earmark-spreadsheet-fill text-success"></i> Excel</span>
+                        <span class="skill-tag"><i class="bi bi-file-spreadsheet text-success"></i> Google SpreadSheet</span>
+                        <span class="skill-tag"><i class="bi bi-file-word-fill text-primary"></i> Microsoft Office</span>
+                        <span class="skill-tag"><i class="bi bi-kanban text-info"></i> Agile Development</span>
+                        <span class="skill-tag"><i class="bi bi-arrow-repeat text-info"></i> Scrum Method</span>
+                        <span class="skill-tag"><i class="bi bi-vector-pen text-purple"></i> Adobe XD</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personal Skills -->
+            <div class="col-lg-5">
+                <div class="skill-card">
+                    <h3 class="h4 fw-bold text-white mb-4 d-flex align-items-center gap-2">
+                        <i class="bi bi-person-check-fill text-info"></i> Personal Skills
+                    </h3>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="skill-tag"><i class="bi bi-mic-fill text-info"></i> Public Speaking</span>
+                        <span class="skill-tag"><i class="bi bi-people-fill text-success"></i> Collaboration</span>
+                        <span class="skill-tag"><i class="bi bi-person-hearts text-purple"></i> Team Work</span>
+                        <span class="skill-tag"><i class="bi bi-award-fill text-warning"></i> Leadership</span>
+                        <span class="skill-tag"><i class="bi bi-lightning-charge-fill text-warning"></i> Fast Learning</span>
+                        <span class="skill-tag"><i class="bi bi-clock-history text-info"></i> Time Management</span>
+                        <span class="skill-tag"><i class="bi bi-cpu-fill text-danger"></i> Critical Thinking</span>
+                        <span class="skill-tag"><i class="bi bi-puzzle-fill text-success"></i> Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact & Footer Section -->
+    <div id="contact" class="container py-5 mb-5 text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="p-5 rounded-4" style="background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7)); border: 1px solid rgba(255,255,255,0.1);">
+                    <h2 class="fw-bold display-6 mb-3 text-white">Let's Connect & Collaborate</h2>
+                    <p class="text-muted mb-4 lead" style="font-size: 1.05rem;">
+                        Terbuka untuk peluang karir dan proyek di bidang Data Analysis, Web Development, & UI/UX Design.
+                    </p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+                        <a href="mailto:nazwadjulia24@gmail.com" class="btn btn-light rounded-pill px-4 py-3 fw-bold d-inline-flex align-items-center gap-2">
+                            <i class="bi bi-envelope-fill text-primary"></i> nazwadjulia24@gmail.com
+                        </a>
+                        <a href="https://wa.me/6285281306784" target="_blank" class="btn btn-outline-light rounded-pill px-4 py-3 fw-bold d-inline-flex align-items-center gap-2">
+                            <i class="bi bi-telephone-fill text-success"></i> 085281306784
+                        </a>
+                    </div>
+
+                    <div class="d-flex justify-content-center gap-4 mt-4">
+                        <a href="https://linkedin.com/in/nazwa-djulia" target="_blank" class="text-white fs-3" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://github.com/nazwadjuliaaaa" target="_blank" class="text-white fs-3" title="GitHub"><i class="bi bi-github"></i></a>
+                        <a href="http://instagram.com/nazwajulia_/" target="_blank" class="text-white fs-3" title="Instagram"><i class="bi bi-instagram"></i></a>
+                    </div>
+
+                    <div class="mt-5 small text-muted font-monospace">
+                        &copy; 2026 Nazwa Djulia. All rights reserved. | <a href="https://nazwadjuliaaaa.github.io/Nazwa_Portofolio/" class="text-info text-decoration-none" target="_blank">Nazwa_Portofolio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Competency Radar Chart
+        var options = {
+          series: [{
+            name: 'Competency Level (%)',
+            data: [88, 85, 84, 85, 82, 90]
+          }],
+          chart: { height: 350, type: 'radar', toolbar: { show: false }, fontFamily: 'Plus Jakarta Sans, sans-serif' },
+          xaxis: {
+            categories: ['Data Analytics', 'Web Dev (Laravel/PHP)', 'LLM & AI Integration', 'UI/UX Design', 'SQL & Databases', 'Public Relations'],
+            labels: { show: true, style: { colors: Array(6).fill('#cbd5e1'), fontSize: '11px', fontFamily: 'Plus Jakarta Sans, sans-serif' } }
+          },
+          stroke: { show: true, width: 2, colors: ['#22d3ee'] },
+          fill: { opacity: 0.25, colors: ['#22d3ee'] },
+          markers: { size: 5, colors: ['#22d3ee'], strokeColors: '#0f172a', strokeWidth: 2 },
+          yaxis: { show: false, min: 0, max: 100 },
+          plotOptions: { radar: { polygons: { strokeColors: 'rgba(255,255,255,0.1)', connectorColors: 'rgba(255,255,255,0.1)' } } },
+          tooltip: { theme: 'dark' }
+        };
+        var chart = new ApexCharts(document.querySelector("#competencyChart"), options);
+        chart.render();
+
+        // Parallax Effect for 3D Photo Card
+        document.addEventListener('mousemove', (e) => {
+            const card = document.querySelector('.photo-card');
+            const glow = document.querySelector('.card-glow');
+            if(window.innerWidth > 991 && card && glow) {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+                card.style.transform = `rotateY(${-12 + xAxis}deg) rotateX(${5 + yAxis}deg) rotateZ(-2deg)`;
+                glow.style.transform = `rotateY(${-12 + xAxis}deg) translateZ(-50px)`;
+            }
+        });
+    </script>
+  </body>
+</html>
