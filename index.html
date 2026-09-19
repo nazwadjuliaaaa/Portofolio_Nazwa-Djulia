@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nazwa Djulia | Portfolio</title>
+    <title>Nazwa Djulia | Portofolio Informatika & Data Analyst</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,12 +23,13 @@
         /* --- GLOBAL VARIABLES --- */
         :root {
             --bg-dark: #02040a; 
-            --bg-card: rgba(15, 23, 42, 0.65);
+            --bg-card: rgba(15, 23, 42, 0.7);
             --text-main: #ffffff;
             --text-muted: #cbd5e1;
             --accent-cyan: #22d3ee; 
             --accent-purple: #8b5cf6;
             --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
             --font-main: 'Plus Jakarta Sans', sans-serif;
             --font-code: 'JetBrains Mono', monospace;
         }
@@ -54,8 +55,8 @@
         .text-muted { color: #94a3b8 !important; }
 
         /* Scroll Offset for Navigation */
-        section, #about, #experience, #projects, #skills, #contact {
-            scroll-margin-top: 100px;
+        section, #about, #experience, #organizations, #projects, #skills, #contact {
+            scroll-margin-top: 90px;
         }
 
         /* --- BACKGROUND PATTERN --- */
@@ -73,17 +74,17 @@
             -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
         }
 
-        /* --- NAVBAR (STICKY & GLASS) --- */
+        /* --- NAVBAR --- */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             padding: 1rem 0;
-            background: rgba(2, 4, 10, 0.85) !important;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(2, 4, 10, 0.88) !important;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             z-index: 1000;
             transition: all 0.3s ease;
         }
@@ -184,7 +185,7 @@
             font-size: 1.05rem;
             color: var(--text-muted);
             line-height: 1.7;
-            max-width: 600px;
+            max-width: 630px;
             margin-bottom: 2.5rem;
         }
         .btn-project {
@@ -267,7 +268,7 @@
             position: absolute;
             bottom: 25px; left: 20px; right: 20px;
             padding: 16px;
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 16px;
@@ -299,7 +300,7 @@
 
         /* --- CARDS --- */
         .feature-card, .stat-card, .chart-card, .experience-card, .project-card, .skill-card {
-            background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6));
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.65));
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 2rem;
@@ -331,7 +332,7 @@
             width: 60px; height: 4px; background: #22d3ee; margin: 10px auto 40px auto; border-radius: 2px;
         }
 
-        /* --- EXPERIENCE SPECIFIC --- */
+        /* --- EXPERIENCE & BULLET STYLING --- */
         .badge-custom {
             font-family: var(--font-code);
             font-size: 0.7rem;
@@ -368,13 +369,15 @@
             margin-bottom: 1.5rem;
             color: #cbd5e1;
             line-height: 1.7;
-            font-size: 0.92rem;
+            font-size: 0.93rem;
         }
-        .experience-desc ul {
+        .experience-desc ul, .org-desc ul, .project-bullets ul {
             padding-left: 1.2rem;
+            margin-bottom: 0;
         }
-        .experience-desc li {
-            margin-bottom: 0.4rem;
+        .experience-desc li, .org-desc li, .project-bullets li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
         }
         .org-desc {
             border-left: 3px solid #8b5cf6;
@@ -382,7 +385,7 @@
             margin-bottom: 1.5rem;
             color: #cbd5e1;
             line-height: 1.7;
-            font-size: 0.92rem;
+            font-size: 0.93rem;
         }
         .tech-pill {
             background: rgba(255, 255, 255, 0.05);
@@ -466,12 +469,13 @@
         
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav align-items-center">
-            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">Tentang Saya</a></li>
+            <li class="nav-item"><a class="nav-link" href="#experience">Pengalaman</a></li>
+            <li class="nav-item"><a class="nav-link" href="#organizations">Organisasi</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Proyek</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Keahlian</a></li>
             <li class="nav-item">
-                <a href="#contact" class="btn-talk">Let's Talk</a>
+                <a href="#contact" class="btn-talk">Hubungi Saya</a>
             </li>
           </ul>
         </div>
@@ -486,7 +490,7 @@
                 <div class="col-lg-7">
                     <div class="tagline-wrapper">
                         <div class="tagline-text">
-                            HI I'M..<span class="cursor-blink">_</span>
+                            HALO, SAYA..<span class="cursor-blink">_</span>
                         </div>
                     </div>
 
@@ -495,15 +499,15 @@
                     </h1>
 
                     <p class="hero-desc">
-                        Informatics student at Al-Azhar Indonesia University (<strong>GPA 3.65 / 4.00</strong>). Experienced in data processing & analysis, LLM email classification systems, UI/UX design, and web/application development using Laravel, Python, Flutter, and SQL.
+                        Mahasiswa Informatika dari Universitas Al-Azhar Indonesia (<strong>IPK 3.65 / 4.00</strong>) dengan keahlian dasar dalam desain UI/UX, pengolahan dan analisis data, serta analisis kinerja dan kebiasaan penggunaan website atau aplikasi. Berpengalaman mengembangkan website dan aplikasi sederhana dengan pendekatan yang terstruktur dan berorientasi pengguna.
                     </p>
 
                     <div class="d-flex flex-wrap gap-3 align-items-center justify-content-center justify-content-lg-start">
                         <a href="#projects" class="btn-project">
-                            View Projects <i class="bi bi-rocket-takeoff-fill"></i>
+                            Lihat Proyek <i class="bi bi-rocket-takeoff-fill"></i>
                         </a>
                         <a href="mailto:nazwadjulia24@gmail.com" class="btn-outline-custom">
-                            <i class="bi bi-envelope-fill"></i> Contact Me
+                            <i class="bi bi-envelope-fill"></i> Kontak Saya
                         </a>
                     </div>
                 </div>
@@ -514,10 +518,10 @@
                         
                         <div class="photo-card">
                             <div class="role-badge">
-                                <span class="role-label">CURRENT STATUS</span>
+                                <span class="role-label">PERAN SAAT INI</span>
                                 <div class="role-text">
                                     <span class="status-dot"></span>
-                                    Informatics Student & Data Analyst Intern
+                                    Mahasiswa Informatika & Data Analyst Intern
                                 </div>
                             </div>
                         </div>
@@ -535,22 +539,22 @@
             <div class="col-md-4">
                 <div class="feature-card">
                     <div class="icon-box"> <i class="bi bi-bar-chart-line-fill"></i> </div>
-                    <h3 class="feature-title fw-bold text-white h5">Data Processing & Analytics</h3>
-                    <p class="small text-muted">Pengolahan, pembersihan data (Pandas/Python), klasifikasi e-COO dengan LLMs, analisis performa model (Precision/Recall/F1), dan visualisasi data.</p>
+                    <h3 class="feature-title fw-bold text-white h5">Pengolahan & Analisis Data</h3>
+                    <p class="small text-muted">Data cleaning, EDA (Python/Pandas), evaluasi model LLM untuk klasifikasi email e-COO (Precision/Recall/F1), serta manajemen database SQLite.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="feature-card">
                     <div class="icon-box"> <i class="bi bi-code-slash"></i> </div>
-                    <h3 class="feature-title fw-bold text-white h5">Web & App Development</h3>
-                    <p class="small text-muted">Pengembangan aplikasi web terstruktur menggunakan Laravel, PHP, MySQL, HTML/CSS, serta integrasi Flutter, Supabase, dan Gemini API.</p>
+                    <h3 class="feature-title fw-bold text-white h5">Pengembangan Web & Aplikasi</h3>
+                    <p class="small text-muted">Pengembangan fitur Payroll & Payslip (Laravel, MySQL, phpMyAdmin), kasir terintegrasi (PHP/MySQL), dan aplikasi Flutter dengan Gemini API & Supabase.</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="feature-card">
                     <div class="icon-box"> <i class="bi bi-palette-fill"></i> </div>
-                    <h3 class="feature-title fw-bold text-white h5">UI/UX & Systems Usability</h3>
-                    <p class="small text-muted">Perancangan antarmuka aplikasi yang user-oriented menggunakan Figma & Adobe XD, dengan analisis kinerja dan kebiasaan pengguna secara terstruktur.</p>
+                    <h3 class="feature-title fw-bold text-white h5">Desain UI/UX & Analisis Performa</h3>
+                    <p class="small text-muted">Perancangan antarmuka aplikasi yang berorientasi pengguna (*user-oriented*) menggunakan Figma & Adobe XD serta analisis kebiasaan pengguna.</p>
                 </div>
             </div>
         </div>
@@ -558,40 +562,43 @@
         <!-- About & Achievements Stats -->
         <div class="row g-5 align-items-center mt-2">
             <div class="col-lg-6">
-                <h2 class="section-title mb-3">About & Background</h2>
+                <h2 class="section-title mb-3">Pendidikan & Minat Utama</h2>
+                <p class="text-muted mb-3" style="line-height: 1.8;">
+                    <strong>Universitas Al Azhar Indonesia</strong> | Informatika | <strong>IPK: 3.65 / 4.00</strong> (<em>Sept 2023 – Sekarang</em>)
+                </p>
                 <p class="text-muted mb-4" style="line-height: 1.8;">
-                    Saya adalah mahasiswa <strong>Informatika Universitas Al-Azhar Indonesia (Sept 2023 - Present)</strong> dengan IPK <strong>3.65 / 4.00</strong>. Berpengalaman sebagai <em>Data Analyst Intern</em> di LNSW Kementerian Keuangan RI, <em>HRIS Intern</em> di PT Pratama Mitra Sejati, <em>Ambassador UAI</em>, serta pengurus Divisi Humas & Advokasi HMIF UAI. Memiliki ketertarikan kuat dalam pengembangan teknologi digital, analisis data berorientasi hasil, serta komunikasi profesional yang adaptif.
+                    <strong>Area Minat:</strong> Mahasiswa Informatika dari Universitas Al-Azhar Indonesia dengan keahlian dasar dalam desain UI/UX, pengolahan dan analisis data, serta analisis kinerja dan kebiasaan penggunaan website atau aplikasi. Berpengalaman mengembangkan website dan aplikasi sederhana dengan pendekatan terstruktur dan berorientasi pengguna. Tertarik pada pengembangan teknologi digital, memiliki kemampuan analisis yang kuat, serta semangat belajar yang tinggi untuk terus meningkatkan keterampilan teknis dan profesional. Memiliki keterampilan komunikasi dan kolaborasi yang kuat.
                 </p>
                 <div class="row g-3">
                     <div class="col-6">
                         <div class="stat-card">
                             <div class="display-5 fw-bold text-info">3.65</div>
-                            <div class="small text-muted font-monospace">GPA (OUT OF 4.00)</div>
+                            <div class="small text-muted font-monospace">IPK (DARI 4.00)</div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="stat-card">
                             <div class="display-5 fw-bold text-info">4+</div>
-                            <div class="small text-muted font-monospace">INTERNS & ROLES</div>
+                            <div class="small text-muted font-monospace">PERAN & MAGANG</div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="stat-card">
                             <div class="display-5 fw-bold text-info">6+</div>
-                            <div class="small text-muted font-monospace">KEY PROJECTS</div>
+                            <div class="small text-muted font-monospace">PROYEK UTAMA</div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="stat-card">
                             <div class="display-5 fw-bold text-info">20+</div>
-                            <div class="small text-muted font-monospace">TOOLS & TECH</div>
+                            <div class="small text-muted font-monospace">TOOLS & SKILL</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="chart-card">
-                    <div class="small text-info font-monospace mb-3"><i class="bi bi-radar"></i> COMPETENCY MATRIX</div>
+                    <div class="small text-info font-monospace mb-3"><i class="bi bi-radar"></i> MATRIKS KOMPETENSI</div>
                     <div id="competencyChart"></div>
                 </div>
             </div>
@@ -601,10 +608,10 @@
     <!-- Professional Experience Section -->
     <div id="experience" class="container py-5 mb-5">
         <div class="text-center mb-5">
-            <h2 class="fw-bold text-white display-6">Professional & Organizational Journey</h2>
+            <h2 class="fw-bold text-white display-6">Pengalaman Kerja & Magang</h2>
             <div class="section-divider"></div>
             <p style="color: #cbd5e1; max-width: 650px; margin: 0 auto;">
-                Pengalaman kerja magang, peran akademis, dan keaktifan organisasi yang telah saya jalani.
+                Riwayat pengalaman profesional dan magang terstruktur sesuai dengan CV.
             </p>
         </div>
 
@@ -619,29 +626,33 @@
                             <div class="d-flex gap-2 flex-wrap">
                                 <span class="badge-custom badge-emerald">Data Analytics</span>
                                 <span class="badge-custom">LLM & Prompt Eng</span>
-                                <span class="badge-custom">Python</span>
+                                <span class="badge-custom">Python & Pandas</span>
+                                <span class="badge-custom">SQLite</span>
                             </div>
                         </div>
-                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>Marc 2026 – Jun 2026 </div>
+                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>Maret 2026 – Juni 2026 </div>
                     </div>
                     <div class="company-name mb-3 text-info fw-semibold"> 
-                        <i class="bi bi-building-fill me-2"></i> Lembaga National Single Window (LNSW), Ministry of Finance of Indonesia 
+                        <i class="bi bi-building-fill me-2"></i> Lembaga National Single Window (LNSW), Kementerian Keuangan Republik Indonesia 
                     </div>
                     <div class="experience-desc">
                         <ul>
-                            <li>Menganalisis data email Contact Center e-COO menggunakan <strong>Large Language Models (LLMs)</strong> untuk mengevaluasi akurasi kategorisasi email oleh service agent.</li>
-                            <li>Melakukan <em>data cleaning</em>, <em>preprocessing</em>, dan <em>exploratory data analysis (EDA)</em> pada dataset email dan tiket menggunakan <strong>Python & Pandas</strong>.</li>
-                            <li>Mengembangkan sistem klasifikasi email otomatis melalui integrasi API LLM dan teknik <em>prompt engineering</em>.</li>
-                            <li>Mengevaluasi kinerja model menggunakan metrik <em>confusion matrix</em>, akurasi, presisi, <em>recall</em>, dan <em>F1-score</em>.</li>
-                            <li>Merancang sistem ekstraksi informasi untuk mengidentifikasi detail penting tiket (nomor dokumen, nama pengirim, negara tujuan, kategori isu).</li>
-                            <li>Membangun dan mengelola database <strong>SQLite</strong> untuk menyimpan hasil ekstraksi terstruktur guna analisis lanjutan.</li>
-                            <li>Membuat model klasifikasi berbasis aturan (rule-based) serta laporan visualisasi data untuk mendukung wawasan operasional Contact Center.</li>
+                            <li>Menganalisis data email Contact Center e-COO menggunakan Large Language Models (LLMs) untuk mengevaluasi akurasi kategorisasi email yang dilakukan oleh petugas layanan (*service agents*).</li>
+                            <li>Melakukan pembersihan data (*data cleaning*), pra-pemrosesan (*preprocessing*), dan analisis data eksploratif (*exploratory data analysis - EDA*) pada dataset email dan tiket menggunakan Python dan Pandas.</li>
+                            <li>Mengembangkan sistem klasifikasi email otomatis dengan mengintegrasikan API LLM dan menerapkan teknik rekayasa prompt (*prompt engineering*).</li>
+                            <li>Mengevaluasi kinerja model menggunakan metrik *confusion matrix*, akurasi (*accuracy*), presisi (*precision*), *recall*, dan *F1-score*.</li>
+                            <li>Merancang sistem ekstraksi informasi untuk mengidentifikasi rincian kunci dari pesan tiket, termasuk nomor dokumen, nama pengirim, negara tujuan, dan kategori masalah.</li>
+                            <li>Membangun dan mengelola database SQLite untuk menyimpan hasil ekstraksi terstruktur guna analisis lebih lanjut.</li>
+                            <li>Membuat model klasifikasi berbasis aturan (*rule-based*) untuk mengategorikan isu e-COO dan mendukung wawasan operasional.</li>
+                            <li>Mengembangkan visualisasi data dan laporan analitis untuk mengidentifikasi tren, distribusi masalah, serta indikator kinerja layanan.</li>
+                            <li>Berkolaborasi dengan mentor dan tim analitik data untuk meningkatkan solusi berbasis AI bagi operasional Contact Center.</li>
                         </ul>
                     </div>
                     <div class="mt-auto d-flex gap-2 flex-wrap">
                         <span class="tech-pill"><i class="bi bi-code"></i> Python</span>
                         <span class="tech-pill"><i class="bi bi-table"></i> Pandas</span>
                         <span class="tech-pill"><i class="bi bi-robot"></i> LLM APIs</span>
+                        <span class="tech-pill"><i class="bi bi-cpu"></i> Prompt Engineering</span>
                         <span class="tech-pill"><i class="bi bi-database"></i> SQLite</span>
                         <span class="tech-pill"><i class="bi bi-bar-chart"></i> Data Viz</span>
                     </div>
@@ -655,29 +666,31 @@
                         <div>
                             <h3 class="text-white fw-bold mb-2 h4">HRIS Intern</h3>
                             <div class="d-flex gap-2 flex-wrap">
-                                <span class="badge-custom badge-purple">Web Development</span>
+                                <span class="badge-custom badge-purple">Pengembangan Web</span>
                                 <span class="badge-custom">Laravel</span>
-                                <span class="badge-custom">Database Management</span>
+                                <span class="badge-custom">Payroll & Payslip</span>
                             </div>
                         </div>
-                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>15 Juni 2026 – 14 Okt 2026 </div>
+                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>15 Juni 2026 – 14 Oktober 2026 </div>
                     </div>
                     <div class="company-name mb-3 text-info fw-semibold"> 
-                        <i class="bi bi-building-fill me-2"></i> PT. Pratama Mitra Sejati (Tugurent.com) 
+                        <i class="bi bi-building-fill me-2"></i> PT. Pratama Mitra Sejati 
                     </div>
                     <div class="experience-desc">
                         <ul>
-                            <li>Mengembangkan dan meningkatkan fitur <strong>Payroll & Payslip</strong> pada sistem HR internal perusahaan (<strong>Tugurent.com</strong>).</li>
-                            <li>Mengelola serta memelihara data pegawai kontrak untuk memastikan akurasi dan konsistensi data sistem.</li>
-                            <li>Melakukan validasi dan verifikasi data pegawai secara berkala.</li>
-                            <li>Melakukan pengujian fungsional (<em>functional testing</em>) dan identifikasi bug khusus fitur Payroll & Payslip.</li>
-                            <li>Menggunakan <strong>VS Code, Laravel, MySQL, phpMyAdmin, dan GitHub</strong> untuk mendukung pengembangan fitur, manajemen database, dan pembaruan sistem.</li>
+                            <li>Mengembangkan dan meningkatkan fitur Penggajian (*Payroll*) dan Slip Gaji (*Payslip*) pada sistem HR internal perusahaan, Tugurent.com.</li>
+                            <li>Mengelola dan memelihara data karyawan kontrak, memastikan akurasi dan konsistensi data.</li>
+                            <li>Melakukan validasi dan verifikasi data untuk memastikan informasi karyawan akurat dan selalu terbaru (*up-to-date*).</li>
+                            <li>Melakukan pengujian fungsional (*functional testing*) dan identifikasi bug khusus untuk fitur Payroll dan Payslip.</li>
+                            <li>Membantu dalam mengelola dan memelihara database yang berkaitan dengan karyawan.</li>
+                            <li>Menggunakan Visual Studio Code, Laravel, MySQL, phpMyAdmin, dan GitHub untuk mendukung pengembangan fitur, manajemen database, pengujian, dan implementasi.</li>
                         </ul>
                     </div>
                     <div class="mt-auto d-flex gap-2 flex-wrap">
                         <span class="tech-pill"><i class="bi bi-layers"></i> Laravel</span>
                         <span class="tech-pill"><i class="bi bi-database"></i> MySQL</span>
                         <span class="tech-pill"><i class="bi bi-tools"></i> phpMyAdmin</span>
+                        <span class="tech-pill"><i class="bi bi-terminal"></i> VS Code</span>
                         <span class="tech-pill"><i class="bi bi-git"></i> GitHub</span>
                         <span class="tech-pill"><i class="bi bi-bug"></i> Functional Testing</span>
                     </div>
@@ -695,23 +708,27 @@
                                 <span class="badge-custom">Student Relations</span>
                             </div>
                         </div>
-                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>Nov 2023 – Jan 2026 </div>
+                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>November 2023 – Januari 2026 </div>
                     </div>
                     <div class="company-name mb-3 text-info fw-semibold"> 
-                        <i class="bi bi-mortarboard-fill me-2"></i> Universitas Al Azhar Indonesia 
+                        <i class="bi bi-mortarboard-fill me-2"></i> Universitas Al-Azhar Indonesia 
                     </div>
                     <div class="experience-desc">
                         <ul>
-                            <li>Menjadi titik kontak utama bagi calon mahasiswa baru, menjawab pertanyaan, dan memberikan informasi komprehensif mengenai universitas.</li>
-                            <li>Membantu proses <em>onboarding</em> mahasiswa baru meliputi pendaftaran, orientasi, dan pendataan dokumen.</li>
-                            <li>Berbagi pengalaman pribadi mengenai kehidupan kampus, program akademik, dan kegiatan ekstrakurikuler.</li>
-                            <li>Bertindak sebagai penghubung (liaison) antara universitas dengan SMA/SMK mitra, organisasi masyarakat, dan pemangku kepentingan.</li>
+                            <li>Menyusun dokumen laporan mengenai mahasiswa baru di Universitas Al-Azhar Indonesia.</li>
+                            <li>Bertindak sebagai titik kontak utama bagi calon mahasiswa, menjawab pertanyaan mereka, dan memberikan informasi tentang universitas.</li>
+                            <li>Berbagi pengalaman pribadi dan wawasan tentang kehidupan mahasiswa, program akademik, dan kegiatan ekstrakurikuler di universitas.</li>
+                            <li>Interaksi dan berkolaborasi dengan mahasiswa, dosen, dan staf saat ini untuk mengumpulkan umpan balik (*feedback*) guna meningkatkan penawaran dan layanan universitas.</li>
+                            <li>Membantu proses *onboarding* bagi mahasiswa baru yang masuk, termasuk pendaftaran, akomodasi/perumahan, dan orientasi.</li>
+                            <li>Bertindak sebagai penghubung (*liaison*) antara universitas dengan SMA/SMK lokal, organisasi masyarakat, dan pemangku kepentingan lainnya.</li>
+                            <li>Secara berkelanjutan mencari peluang untuk meningkatkan program duta (*ambassador*) dan meningkatkan efektivitas keseluruhan dari upaya perekrutan mahasiswa.</li>
                         </ul>
                     </div>
                     <div class="mt-auto d-flex gap-2 flex-wrap">
                         <span class="tech-pill">Public Speaking</span>
                         <span class="tech-pill">Communication</span>
                         <span class="tech-pill">Student Onboarding</span>
+                        <span class="tech-pill">Liaison</span>
                     </div>
                 </div>
             </div>
@@ -721,61 +738,28 @@
                 <div class="experience-card">
                     <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-3">
                         <div>
-                            <h3 class="text-white fw-bold mb-2 h4">Members of the Voting Organizing Group (KPPS)</h3>
+                            <h3 class="text-white fw-bold mb-2 h4">Anggota Kelompok Penyelenggara Pemungutan Suara (KPPS)</h3>
                             <div class="d-flex gap-2 flex-wrap">
-                                <span class="badge-custom">Government</span>
-                                <span class="badge-custom">Public Administration</span>
+                                <span class="badge-custom">Pemerintahan</span>
+                                <span class="badge-custom">Administrasi Publik</span>
                             </div>
                         </div>
-                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>Jan 2024 – Feb 2024 </div>
+                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>Januari 2024 – Februari 2024 </div>
                     </div>
                     <div class="company-name mb-3 text-info fw-semibold"> 
                         <i class="bi bi-shield-check me-2"></i> Komisi Pemilihan Umum (KPU) 
                     </div>
                     <div class="experience-desc">
                         <ul>
-                            <li>Meningkatkan keterampilan komunikasi dan koordinasi publik dalam melayani masyarakat dari berbagai latar belakang secara akurat.</li>
-                            <li>Menjaga kedisiplinan, ketelitian, dan tanggung jawab dalam mengelola prosedur serta dokumen resmi yang bersifat penting dan sensitif.</li>
-                            <li>Bekerja efektif di lingkungan formal dengan batasan waktu yang ketat sesuai prosedur baku.</li>
+                            <li>Meningkatkan keterampilan komunikasi dan koordinasi, khususnya dalam melayani masyarakat dari berbagai latar belakang serta menyampaikan informasi secara jelas dan akurat.</li>
+                            <li>Menumbuhkan kedisiplinan, ketelitian, dan rasa tanggung jawab, terutama dalam menjalankan prosedur, administrasi, dan mengelola dokumen-dokumen penting dan sensitif.</li>
+                            <li>Memperoleh pengalaman bekerja di lingkungan formal dengan alur waktu yang ketat, sehingga terbiasa bekerja secara rapi, teratur, dan sesuai prosedur.</li>
                         </ul>
                     </div>
                     <div class="mt-auto d-flex gap-2 flex-wrap">
-                        <span class="tech-pill">Administration</span>
-                        <span class="tech-pill">Team Coordination</span>
-                        <span class="tech-pill">Accuracy & Discipline</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5. Organization | HMIF UAI -->
-            <div class="col-lg-10">
-                <div class="experience-card" style="border-left: 4px solid #8b5cf6;">
-                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-3">
-                        <div>
-                            <h3 class="text-white fw-bold mb-2 h4">Divisi Hubungan Masyarakat & Advokasi</h3>
-                            <div class="d-flex gap-2 flex-wrap">
-                                <span class="badge-custom badge-purple">Organization</span>
-                                <span class="badge-custom badge-purple">Public Relations</span>
-                            </div>
-                        </div>
-                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>Okt 2024 – Jan 2026 </div>
-                    </div>
-                    <div class="company-name mb-3 text-info fw-semibold"> 
-                        <i class="bi bi-people-fill me-2"></i> Himpunan Mahasiswa Informatika (HMIF) UAI 
-                    </div>
-                    <div class="org-desc">
-                        <ul>
-                            <li>Mengelola komunikasi internal dan eksternal organisasi untuk membangun citra positif dan menyebarkan informasi secara efektif.</li>
-                            <li>Merancang dan mengimplementasikan strategi publikasi media sosial, poster, dan konten informatif guna meningkatkan visibilitas program.</li>
-                            <li>Menjadi penghubung aspirasi anggota himpunan untuk pengolahan materi advokasi dan pengambilan keputusan organisasi.</li>
-                            <li>Berkolaborasi antar divisi dalam menyukseskan program kerja himpunan secara terstruktur.</li>
-                        </ul>
-                    </div>
-                    <div class="mt-auto d-flex gap-2 flex-wrap">
-                        <span class="tech-pill">Public Relations</span>
-                        <span class="tech-pill">Social Media Strategy</span>
-                        <span class="tech-pill">Advocacy</span>
-                        <span class="tech-pill">Team Leadership</span>
+                        <span class="tech-pill">Administrasi</span>
+                        <span class="tech-pill">Koordinasi Tim</span>
+                        <span class="tech-pill">Ketelitian & Tanggung Jawab</span>
                     </div>
                 </div>
             </div>
@@ -783,13 +767,60 @@
         </div>
     </div>
 
+    <!-- Organizations Section -->
+    <div id="organizations" class="container py-5 mb-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold text-white display-6">Pengalaman Organisasi</h2>
+            <div class="section-divider"></div>
+            <p style="color: #cbd5e1; max-width: 650px; margin: 0 auto;">
+                Keaktifan dalam organisasi kemahasiswaan dan kehumasan.
+            </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-10">
+                <div class="experience-card" style="border-left: 4px solid #8b5cf6;">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-3">
+                        <div>
+                            <h3 class="text-white fw-bold mb-2 h4">Divisi Hubungan Masyarakat dan Advokasi</h3>
+                            <div class="d-flex gap-2 flex-wrap">
+                                <span class="badge-custom badge-purple">Organisasi Mahasiswa</span>
+                                <span class="badge-custom badge-purple">Public Relations</span>
+                                <span class="badge-custom badge-purple">Advokasi</span>
+                            </div>
+                        </div>
+                        <div class="date-badge mt-3 mt-md-0"> <i class="bi bi-calendar3 me-2"></i>Oktober 2024 – Januari 2026 </div>
+                    </div>
+                    <div class="company-name mb-3 text-info fw-semibold"> 
+                        <i class="bi bi-people-fill me-2"></i> Himpunan Mahasiswa Informatika (HMIF) Universitas Al-Azhar Indonesia 
+                    </div>
+                    <div class="org-desc">
+                        <ul>
+                            <li>Mengelola komunikasi internal dan eksternal organisasi untuk membangun citra positif dan menyampaikan informasi secara efektif kepada anggota dan pihak terkait.</li>
+                            <li>Merancang dan mengimplementasikan strategi publikasi serta media komunikasi (media sosial, poster, dan konten informatif) untuk meningkatkan visibilitas dan partisipasi organisasi.</li>
+                            <li>Bertindak sebagai penghubung antara anggota organisasi dan pihak eksternal dalam menyampaikan aspirasi, masukan, dan informasi yang relevan.</li>
+                            <li>Secara sistematis mengumpulkan, memproses, dan menyalurkan aspirasi anggota sebagai bahan advokasi dan pengambilan keputusan organisasi.</li>
+                            <li>Berkolaborasi dengan divisi lain untuk mendukung pelaksanaan program kerja melalui komunikasi yang terkoordinasi dan penyampaian informasi yang jelas.</li>
+                        </ul>
+                    </div>
+                    <div class="mt-auto d-flex gap-2 flex-wrap">
+                        <span class="tech-pill">Public Relations</span>
+                        <span class="tech-pill">Strategi Media Sosial</span>
+                        <span class="tech-pill">Advokasi Aspirasi</span>
+                        <span class="tech-pill">Komunikasi Organisasi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Featured Projects Section -->
     <div id="projects" class="container py-5 mb-5">
         <div class="text-center mb-5">
-            <h2 class="fw-bold display-6 text-white">Featured Projects</h2>
+            <h2 class="fw-bold display-6 text-white">Proyek Unggulan</h2>
             <div class="section-divider"></div>
             <p style="color: #cbd5e1; max-width: 600px; margin: 0 auto;">
-                Kumpulan proyek nyata dan akademik meliputi web development, sistem AI, UI/UX design, dan analisis sistem.
+                Kumpulan proyek aplikasi web, sistem AI, UI/UX design, dan analisis sistem sesuai dengan CV.
             </p>
         </div>
 
@@ -805,11 +836,19 @@
                         <span class="badge bg-dark border border-secondary text-info font-monospace">Tugurent.com</span>
                     </div>
                     <h3 class="h4 fw-bold mb-2 text-white">Payroll & Payslip Feature - Tugurent.com</h3>
-                    <p class="small mb-4 text-muted">Pengembangan & peningkatan fitur penggajian (Payroll) serta slip gaji (Payslip) pada sistem HR internal perusahaan. Terintegrasi dengan manajemen data karyawan kontrak & pengujian fungsional terstruktur.</p>
+                    <div class="project-bullets small text-muted mb-4">
+                        <ul>
+                            <li>Dikembangkan dan ditingkatkan fitur Payroll dan Payslip menggunakan <strong>Laravel, MySQL, phpMyAdmin, Visual Studio Code, dan GitHub</strong>.</li>
+                            <li>Mengelola dan mengintegrasikan data karyawan dan penggajian ke dalam sistem informasi HR internal.</li>
+                            <li>Melakukan pengujian fungsional (*functional testing*) dan identifikasi bug untuk memastikan fitur Slip Gaji bekerja sesuai kebutuhan.</li>
+                            <li>Mengelola dan memvalidasi data karyawan kontrak untuk memastikan akurasi dan konsistensi di dalam sistem.</li>
+                        </ul>
+                    </div>
                     <div class="mt-auto d-flex flex-wrap gap-2">
                         <span class="tech-pill">Laravel</span>
                         <span class="tech-pill">MySQL</span>
                         <span class="tech-pill">phpMyAdmin</span>
+                        <span class="tech-pill">VS Code</span>
                         <span class="tech-pill">GitHub</span>
                     </div>
                 </div>
@@ -826,7 +865,13 @@
                         </div>
                     </div>
                     <h3 class="h4 fw-bold mb-2 text-white">Smart Finance AI-Based</h3>
-                    <p class="small mb-4 text-muted">Aplikasi manajemen keuangan berbasis Flutter dengan integrasi Gemini API & Supabase. Memiliki fitur otomatis pencatatan cash inflow/outflow, analisis laba-rugi, serta rekomendasi bisnis strategis dari AI.</p>
+                    <div class="project-bullets small text-muted mb-4">
+                        <ul>
+                            <li>Dikembangkan menggunakan <strong>Flutter, GitHub, Gemini API terintegrasi, dan Supabase</strong>.</li>
+                            <li>Membuat fitur pencatatan *cash inflow* (pemasukan) dan *cash outflow* (pengeluaran) untuk menghitung laba/keuntungan.</li>
+                            <li>Membuat dan menganalisis hasil pendapatan menggunakan AI untuk mengusulkan rekomendasi strategis bagi pertumbuhan bisnis di masa depan.</li>
+                        </ul>
+                    </div>
                     <div class="mt-auto d-flex flex-wrap gap-2">
                         <span class="tech-pill">Flutter</span>
                         <span class="tech-pill">Gemini API</span>
@@ -841,10 +886,16 @@
                 <div class="project-card">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="project-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);"> <i class="bi bi-shop"></i> </div>
-                        <a href="https://drive.google.com/drive/folders/13eYVY0biTlwXrjWdqS0JRTnBxxo2cAn1?usp=sharing" target="_blank" class="btn btn-sm btn-outline-warning rounded-pill px-3">View Folder <i class="bi bi-folder2-open"></i></a>
+                        <a href="https://drive.google.com/drive/folders/13eYVY0biTlwXrjWdqS0JRTnBxxo2cAn1?usp=sharing" target="_blank" class="btn btn-sm btn-outline-warning rounded-pill px-3">Lihat Folder <i class="bi bi-folder2-open"></i></a>
                     </div>
                     <h3 class="h4 fw-bold mb-2 text-white">Website Cashier Taberu Bento</h3>
-                    <p class="small mb-4 text-muted">Sistem kasir web terintegrasi untuk menghitung pendapatan, pengeluaran harian, serta ketersediaan stok bahan baku. Dilengkapi 2 level hak akses admin (Kasir & Pemilik Usaha).</p>
+                    <div class="project-bullets small text-muted mb-4">
+                        <ul>
+                            <li>Dikembangkan menggunakan <strong>HTML, CSS, PHP, dan MySQL</strong>.</li>
+                            <li>Membuat Sistem Kasir untuk menghitung pendapatan dan pengeluaran harian, serta ketersediaan stok bahan baku.</li>
+                            <li>Membuat 2 hak akses admin terintegrasi untuk Kasir dan Pemilik (*Owner*).</li>
+                        </ul>
+                    </div>
                     <div class="mt-auto d-flex flex-wrap gap-2">
                         <span class="tech-pill">HTML / CSS</span>
                         <span class="tech-pill">PHP</span>
@@ -858,14 +909,14 @@
                 <div class="project-card">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="project-icon" style="color: #ec4899; background: rgba(236, 72, 153, 0.1);"> <i class="bi bi-palette-fill"></i> </div>
-                        <a href="https://drive.google.com/drive/folders/1oZNQNzXlo3slD7grPm9kg5wgSoHploZa?usp=sharing" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-3" style="color: #ec4899; border-color: #ec4899;">Design Link</a>
+                        <a href="https://drive.google.com/drive/folders/1oZNQNzXlo3slD7grPm9kg5wgSoHploZa?usp=sharing" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-3" style="color: #ec4899; border-color: #ec4899;">Link Desain</a>
                     </div>
-                    <h4 class="h5 fw-bold mb-2 text-white">Wanna Healthy App UI/UX</h4>
-                    <p class="small mb-4 text-muted">Perancangan desain antarmuka dan pengalaman pengguna aplikasi kesehatan berbasis Augmentation Reality (AR) untuk pemindaian dan deteksi kondisi kesehatan wajah.</p>
+                    <h4 class="h5 fw-bold mb-2 text-white">Wanna Healthy App (Desain UI/UX & AR)</h4>
+                    <p class="small mb-4 text-muted">Perancangan desain antarmuka dan pengalaman pengguna (UI/UX) aplikasi kesehatan berbasis Augmented Reality (AR) untuk deteksi kondisi kesehatan melalui pemindaian wajah.</p>
                     <div class="mt-auto d-flex flex-wrap gap-2">
                         <span class="tech-pill">Figma</span>
                         <span class="tech-pill">UI/UX Design</span>
-                        <span class="tech-pill">AR Concept</span>
+                        <span class="tech-pill">Konsep AR</span>
                     </div>
                 </div>
             </div>
@@ -875,14 +926,14 @@
                 <div class="project-card">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="project-icon" style="color: #3b82f6; background: rgba(59, 130, 246, 0.1);"> <i class="bi bi-controller"></i> </div>
-                        <a href="https://drive.google.com/file/d/147EYKvPjRvMiZj1sOmkWmVSo23-CY1j2/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-3" style="color: #60a5fa; border-color: #60a5fa;">Prototype</a>
+                        <a href="https://drive.google.com/file/d/147EYKvPjRvMiZj1sOmkWmVSo23-CY1j2/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-3" style="color: #60a5fa; border-color: #60a5fa;">Prototipe</a>
                     </div>
-                    <h4 class="h5 fw-bold mb-2 text-white">Scavenger Hunt App Prototype</h4>
-                    <p class="small mb-4 text-muted">Prototipe aplikasi permainan edukatif interaktif yang dikembangkan untuk Program Kreativitas Mahasiswa (PKM) bidang aplikasi interaktif.</p>
+                    <h4 class="h5 fw-bold mb-2 text-white">Scavenger Hunt App (Prototipe PKM)</h4>
+                    <p class="small mb-4 text-muted">Prototipe aplikasi permainan edukatif interaktif yang dikembangkan untuk Program Kreativitas Mahasiswa (PKM) bidang permainan interaktif.</p>
                     <div class="mt-auto d-flex flex-wrap gap-2">
                         <span class="tech-pill">Prototyping</span>
                         <span class="tech-pill">Figma</span>
-                        <span class="tech-pill">PKM Project</span>
+                        <span class="tech-pill">Proyek PKM</span>
                     </div>
                 </div>
             </div>
@@ -892,14 +943,14 @@
                 <div class="project-card">
                     <div class="d-flex justify-content-between align-items-start mb-3">
                         <div class="project-icon" style="color: #10b981; background: rgba(16, 185, 129, 0.1);"> <i class="bi bi-diagram-3-fill"></i> </div>
-                        <a href="https://drive.google.com/file/d/1DZHo8rfTcnZ_23t0awZtAiqAlO9vSeUy/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-3" style="color: #10b981; border-color: #10b981;">Doc Link</a>
+                        <a href="https://drive.google.com/file/d/1DZHo8rfTcnZ_23t0awZtAiqAlO9vSeUy/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-light rounded-pill px-3" style="color: #10b981; border-color: #10b981;">Dokumen</a>
                     </div>
-                    <h4 class="h5 fw-bold mb-2 text-white">System Analysis - Library Management</h4>
-                    <p class="small mb-4 text-muted">Rancangan arsitektur sistem informasi manajemen perpustakaan mencakup perancangan data flow, analisis kebutuhan sistem, dan dokumentasi UML.</p>
+                    <h4 class="h5 fw-bold mb-2 text-white">Analisis & Perancangan Sistem Perpustakaan</h4>
+                    <p class="small mb-4 text-muted">Rancangan analisis dan dokumen arsitektur sistem informasi manajemen perpustakaan yang efisien mencakup Data Flow Diagram dan pemodelan UML.</p>
                     <div class="mt-auto d-flex flex-wrap gap-2">
-                        <span class="tech-pill">System Analysis</span>
-                        <span class="tech-pill">UML Design</span>
-                        <span class="tech-pill">Documentation</span>
+                        <span class="tech-pill">Analisis Sistem</span>
+                        <span class="tech-pill">Pemodelan UML</span>
+                        <span class="tech-pill">Dokumentasi</span>
                     </div>
                 </div>
             </div>
@@ -910,49 +961,14 @@
     <!-- Skills & Tools Showcase Section -->
     <div id="skills" class="container py-5 mb-5">
         <div class="text-center mb-5">
-            <h2 class="fw-bold display-6 text-white">Skills & Competencies</h2>
+            <h2 class="fw-bold display-6 text-white">Keahlian (Skills)</h2>
             <div class="section-divider"></div>
             <p style="color: #cbd5e1; max-width: 600px; margin: 0 auto;">
-                Keahlian teknis, alat (tools), metode kerja, serta keahlian personal yang dikuasai.
+                Rincian keahlian personal (*Personal Skills*) serta keahlian alat & metode (*Tools and Method Skills*) sesuai CV.
             </p>
         </div>
 
         <div class="row g-4">
-            <!-- Tools and Method Skills -->
-            <div class="col-lg-7">
-                <div class="skill-card">
-                    <h3 class="h4 fw-bold text-white mb-4 d-flex align-items-center gap-2">
-                        <i class="bi bi-tools text-info"></i> Tools & Method Skills
-                    </h3>
-                    <div class="d-flex flex-wrap gap-2">
-                        <span class="skill-tag"><i class="bi bi-code-slash text-info"></i> Python</span>
-                        <span class="skill-tag"><i class="bi bi-layers text-purple"></i> Laravel</span>
-                        <span class="skill-tag"><i class="bi bi-database text-info"></i> MySQL</span>
-                        <span class="skill-tag"><i class="bi bi-database-fill text-warning"></i> SQL</span>
-                        <span class="skill-tag"><i class="bi bi-database-gear text-success"></i> SQLite</span>
-                        <span class="skill-tag"><i class="bi bi-palette text-pink"></i> Figma</span>
-                        <span class="skill-tag"><i class="bi bi-filetype-html text-warning"></i> HTML</span>
-                        <span class="skill-tag"><i class="bi bi-filetype-php text-primary"></i> PHP</span>
-                        <span class="skill-tag"><i class="bi bi-phone text-info"></i> Flutter</span>
-                        <span class="skill-tag"><i class="bi bi-robot text-info"></i> Gemini API</span>
-                        <span class="skill-tag"><i class="bi bi-cloud-check text-success"></i> Supabase</span>
-                        <span class="skill-tag"><i class="bi bi-git text-danger"></i> GitHub</span>
-                        <span class="skill-tag"><i class="bi bi-terminal text-info"></i> VSCode</span>
-                        <span class="skill-tag"><i class="bi bi-journal-code text-warning"></i> Google Colab</span>
-                        <span class="skill-tag"><i class="bi bi-book text-warning"></i> Jupyter Notebook</span>
-                        <span class="skill-tag"><i class="bi bi-hdd-network text-info"></i> XAMPP</span>
-                        <span class="skill-tag"><i class="bi bi-server text-info"></i> phpMyAdmin</span>
-                        <span class="skill-tag"><i class="bi bi-bug-fill text-danger"></i> Manual Testing</span>
-                        <span class="skill-tag"><i class="bi bi-file-earmark-spreadsheet-fill text-success"></i> Excel</span>
-                        <span class="skill-tag"><i class="bi bi-file-spreadsheet text-success"></i> Google SpreadSheet</span>
-                        <span class="skill-tag"><i class="bi bi-file-word-fill text-primary"></i> Microsoft Office</span>
-                        <span class="skill-tag"><i class="bi bi-kanban text-info"></i> Agile Development</span>
-                        <span class="skill-tag"><i class="bi bi-arrow-repeat text-info"></i> Scrum Method</span>
-                        <span class="skill-tag"><i class="bi bi-vector-pen text-purple"></i> Adobe XD</span>
-                    </div>
-                </div>
-            </div>
-
             <!-- Personal Skills -->
             <div class="col-lg-5">
                 <div class="skill-card">
@@ -961,13 +977,43 @@
                     </h3>
                     <div class="d-flex flex-wrap gap-2">
                         <span class="skill-tag"><i class="bi bi-mic-fill text-info"></i> Public Speaking</span>
-                        <span class="skill-tag"><i class="bi bi-people-fill text-success"></i> Collaboration</span>
-                        <span class="skill-tag"><i class="bi bi-person-hearts text-purple"></i> Team Work</span>
-                        <span class="skill-tag"><i class="bi bi-award-fill text-warning"></i> Leadership</span>
-                        <span class="skill-tag"><i class="bi bi-lightning-charge-fill text-warning"></i> Fast Learning</span>
-                        <span class="skill-tag"><i class="bi bi-clock-history text-info"></i> Time Management</span>
-                        <span class="skill-tag"><i class="bi bi-cpu-fill text-danger"></i> Critical Thinking</span>
-                        <span class="skill-tag"><i class="bi bi-puzzle-fill text-success"></i> Problem Solving</span>
+                        <span class="skill-tag"><i class="bi bi-people-fill text-success"></i> Kolaborasi (Collaboration)</span>
+                        <span class="skill-tag"><i class="bi bi-person-hearts text-purple"></i> Kerja Sama Tim (Team Work)</span>
+                        <span class="skill-tag"><i class="bi bi-award-fill text-warning"></i> Kepemimpinan (Leadership)</span>
+                        <span class="skill-tag"><i class="bi bi-lightning-charge-fill text-warning"></i> Belajar Cepat (Fast Learning)</span>
+                        <span class="skill-tag"><i class="bi bi-clock-history text-info"></i> Manajemen Waktu (Time Management)</span>
+                        <span class="skill-tag"><i class="bi bi-cpu-fill text-danger"></i> Berpikir Kritis (Critical Thinking)</span>
+                        <span class="skill-tag"><i class="bi bi-puzzle-fill text-success"></i> Pemecahan Masalah (Problem Solving)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools and Method Skills -->
+            <div class="col-lg-7">
+                <div class="skill-card">
+                    <h3 class="h4 fw-bold text-white mb-4 d-flex align-items-center gap-2">
+                        <i class="bi bi-tools text-info"></i> Tools and Method Skills
+                    </h3>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="skill-tag"><i class="bi bi-palette text-pink"></i> Figma</span>
+                        <span class="skill-tag"><i class="bi bi-code-slash text-info"></i> Python</span>
+                        <span class="skill-tag"><i class="bi bi-filetype-html text-warning"></i> HTML</span>
+                        <span class="skill-tag"><i class="bi bi-filetype-php text-primary"></i> PHP</span>
+                        <span class="skill-tag"><i class="bi bi-file-word-fill text-primary"></i> Microsoft Office</span>
+                        <span class="skill-tag"><i class="bi bi-kanban text-info"></i> Agile Development Method</span>
+                        <span class="skill-tag"><i class="bi bi-database-fill text-warning"></i> SQL</span>
+                        <span class="skill-tag"><i class="bi bi-arrow-repeat text-info"></i> Scrum Method</span>
+                        <span class="skill-tag"><i class="bi bi-git text-danger"></i> GitHub</span>
+                        <span class="skill-tag"><i class="bi bi-journal-code text-warning"></i> Google Colab</span>
+                        <span class="skill-tag"><i class="bi bi-terminal text-info"></i> VSCode</span>
+                        <span class="skill-tag"><i class="bi bi-hdd-network text-info"></i> XAMPP</span>
+                        <span class="skill-tag"><i class="bi bi-bug-fill text-danger"></i> Pengujian Manual (Manual Testing)</span>
+                        <span class="skill-tag"><i class="bi bi-file-earmark-spreadsheet-fill text-success"></i> Excel</span>
+                        <span class="skill-tag"><i class="bi bi-file-spreadsheet text-success"></i> Google SpreadSheet</span>
+                        <span class="skill-tag"><i class="bi bi-vector-pen text-purple"></i> Adobe XD</span>
+                        <span class="skill-tag"><i class="bi bi-book text-warning"></i> Jupyter Notebook</span>
+                        <span class="skill-tag"><i class="bi bi-database text-info"></i> MySQL</span>
+                        <span class="skill-tag"><i class="bi bi-layers text-purple"></i> Laravel</span>
                     </div>
                 </div>
             </div>
@@ -979,7 +1025,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="p-5 rounded-4" style="background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7)); border: 1px solid rgba(255,255,255,0.1);">
-                    <h2 class="fw-bold display-6 mb-3 text-white">Let's Connect & Collaborate</h2>
+                    <h2 class="fw-bold display-6 mb-3 text-white">Hubungi & Berkolaborasi</h2>
                     <p class="text-muted mb-4 lead" style="font-size: 1.05rem;">
                         Terbuka untuk peluang karir dan proyek di bidang Data Analysis, Web Development, & UI/UX Design.
                     </p>
@@ -1013,12 +1059,12 @@
         // Competency Radar Chart
         var options = {
           series: [{
-            name: 'Competency Level (%)',
+            name: 'Tingkat Kompetensi (%)',
             data: [88, 85, 84, 85, 82, 90]
           }],
           chart: { height: 350, type: 'radar', toolbar: { show: false }, fontFamily: 'Plus Jakarta Sans, sans-serif' },
           xaxis: {
-            categories: ['Data Analytics', 'Web Dev (Laravel/PHP)', 'LLM & AI Integration', 'UI/UX Design', 'SQL & Databases', 'Public Relations'],
+            categories: ['Pengolahan Data', 'Web Dev (Laravel/PHP)', 'Integrasi LLM & AI', 'Desain UI/UX', 'SQL & Database', 'Public Relations'],
             labels: { show: true, style: { colors: Array(6).fill('#cbd5e1'), fontSize: '11px', fontFamily: 'Plus Jakarta Sans, sans-serif' } }
           },
           stroke: { show: true, width: 2, colors: ['#22d3ee'] },
